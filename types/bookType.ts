@@ -1,3 +1,10 @@
+export type Ripple = {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+};
+
 export interface BookType {
   bookId: number;
   bookName: string;
