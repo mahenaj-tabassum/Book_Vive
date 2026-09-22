@@ -4,8 +4,8 @@ import Books from "@/components/Home/Books";
 const Home = () => {
   return (
     <>
-      {/* <Banner />
-      <Books /> */}
+      <Banner />
+      <Books />
     </>
   );
 };

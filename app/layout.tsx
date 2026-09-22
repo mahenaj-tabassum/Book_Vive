@@ -27,7 +27,7 @@ const RootLayout = ({ children }: LayoutProps<"/">) => {
       <body>
         <BooksProvider>
           <Navbar />
-          <main>{children}</main>
+          <main className="pt-20">{children}</main>
           <ToastProvider />
         </BooksProvider>
       </body>
