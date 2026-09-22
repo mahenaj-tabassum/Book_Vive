@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "components/BookDetailsButton/ReadButton.tss"  ],
+, "components/BookDetailsButton/ReadButton.tss", "app/chart/page.tsx"  ],
   "exclude": ["node_modules"]
 }

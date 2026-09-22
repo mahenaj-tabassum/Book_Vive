@@ -2,6 +2,7 @@
 import { Ripple } from "@/types/bookType";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -9,6 +10,8 @@ const Navbar = () => {
   const [ripples, setRipples] = useState<Ripple[]>([]);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const [menuHeight, setMenuHeight] = useState(0);
+  const pathname = usePathname();
+
   const rippleEffect = (e: React.MouseEvent<HTMLButtonElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height) * 1.6;
@@ -107,16 +110,28 @@ const Navbar = () => {
 
           {/* Center Nav */}
           <div className="hidden lg:flex items-center gap-9 text-[15px] font-medium">
-            <Link className="nav-link" href="/">
+            <Link
+              className={`nav-link ${pathname === "/" ? "nav-active" : ""}`}
+              href="/"
+            >
               Home
             </Link>
-            <Link className="nav-link" href="/books">
+            <Link
+              className={`nav-link ${pathname === "/books" ? "nav-active" : ""}`}
+              href="/books"
+            >
               Books
             </Link>
-            <Link className="nav-link" href="/listed-books">
+            <Link
+              className={`nav-link ${pathname === "/listed-books" ? "nav-active" : ""}`}
+              href="/listed-books"
+            >
               Listed Books
             </Link>
-            <Link className="nav-link" href="/chart">
+            <Link
+              className={`nav-link ${pathname === "/chart" ? "nav-active" : ""}`}
+              href="/chart"
+            >
               Pages to Read
             </Link>
           </div>
@@ -176,26 +191,30 @@ const Navbar = () => {
           className={`md:hidden overflow-hidden transition-all duration-500 ${menuOpen ? "opacity-100" : "opacity-0"}`}
         >
           <div className="flex flex-col gap-1 pb-5 pt-1 text-[15px] font-medium border-t border-hair">
-            <Link onClick={() => setMenuOpen(false)} className="py-3" href="/">
+            <Link
+              onClick={() => setMenuOpen(false)}
+              className={`nav-link py-3 ${pathname === "/" ? "nav-active" : ""}`}
+              href="/"
+            >
               Home
             </Link>
             <Link
               onClick={() => setMenuOpen(false)}
-              className="py-3"
+              className={`nav-link py-3 ${pathname === "/books" ? "nav-active" : ""}`}
               href="/books"
             >
               Books
             </Link>
             <Link
               onClick={() => setMenuOpen(false)}
-              className="py-3"
+              className={`nav-link py-3 ${pathname === "/listed-books" ? "nav-active" : ""}`}
               href="/listed-books"
             >
               Listed Books
             </Link>
             <Link
               onClick={() => setMenuOpen(false)}
-              className="py-3"
+              className={`nav-link py-3 ${pathname === "/chart" ? "nav-active" : ""}`}
               href="/chart"
             >
               Pages to Read
